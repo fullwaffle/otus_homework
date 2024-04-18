@@ -24,8 +24,8 @@ def is_prime(number: int) -> bool:
     """
     функция, которая проверяет простое ли число
 
-    @param number: Принимает число
-    @return: Возвращает bool
+    :param number: принимает целое число
+    :return: возвращает bool
     """
     if number <= 1:
         return False
