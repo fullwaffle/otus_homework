@@ -26,20 +26,16 @@ async def create_tables() -> None:
         await conn.run_sync(Base.metadata.create_all)
 
 
-async def create_users(session: AsyncSession, users):
+async def create_users(session: AsyncSession, users: dict):
     users = [User(name=user["name"], username=user["username"], email=user["email"]) for user in users]
     session.add_all(users)
     await session.commit()
 
-    return users
 
-
-async def create_posts(session: AsyncSession, posts):
+async def create_posts(session: AsyncSession, posts: dict):
     posts = [Post(title=post["title"], body=post["body"], user_id=post["userId"]) for post in posts]
     session.add_all(posts)
     await session.commit()
-
-    return posts
 
 
 async def async_main() -> None:
