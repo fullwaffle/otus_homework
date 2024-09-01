@@ -33,8 +33,14 @@ def create_owner():
     db.session.add(owner)
     db.session.commit()
 
-    new_url = url_for("views.index")
-    return redirect(new_url, code=201)
+    return jsonify(
+        {
+            "id": owner.id,
+            "name": owner.name,
+            "age": owner.age,
+            "phone": owner.phone
+        }
+    )
 
 
 @api.route("/api/pets", methods=["GET"])
