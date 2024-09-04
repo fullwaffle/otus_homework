@@ -12,11 +12,16 @@
   (используйте полученные из запроса данные, передайте их в функцию для добавления в БД)
 - закрытие соединения с БД
 """
+
 import asyncio
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from homework_04.jsonplaceholder_requests import USERS_DATA_URL, POSTS_DATA_URL, fetch_json
+from homework_04.jsonplaceholder_requests import (
+    USERS_DATA_URL,
+    POSTS_DATA_URL,
+    fetch_json,
+)
 from homework_04.models import async_engine, Session, Base, User, Post
 
 
@@ -27,13 +32,19 @@ async def create_tables() -> None:
 
 
 async def create_users(session: AsyncSession, users: dict):
-    users = [User(name=user["name"], username=user["username"], email=user["email"]) for user in users]
+    users = [
+        User(name=user["name"], username=user["username"], email=user["email"])
+        for user in users
+    ]
     session.add_all(users)
     await session.commit()
 
 
 async def create_posts(session: AsyncSession, posts: dict):
-    posts = [Post(title=post["title"], body=post["body"], user_id=post["userId"]) for post in posts]
+    posts = [
+        Post(title=post["title"], body=post["body"], user_id=post["userId"])
+        for post in posts
+    ]
     session.add_all(posts)
     await session.commit()
 

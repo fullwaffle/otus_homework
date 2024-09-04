@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request, redirect, url_for
+from flask import Blueprint, jsonify, request
 from models.models import Owner, Pet, db
 
 api = Blueprint("api", __name__)
