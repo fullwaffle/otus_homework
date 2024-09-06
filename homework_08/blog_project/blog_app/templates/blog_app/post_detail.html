@@ -8,5 +8,5 @@
 <p><strong>{{ comment.author }}</strong> - {{ comment.content }}</p>
 {% endfor %}
 
-<a href="{% url 'post-list' %}">Back to posts list</a>
+<a href="{% url 'blog_app:post-list' %}">Back to posts list</a>
 {% endblock %}
